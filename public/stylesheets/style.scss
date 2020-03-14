@@ -1,0 +1,217 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  box-sizing: border-box;
+}
+body {
+  background: black;
+  font-size: 0.9rem;
+}
+
+.wrapper {
+  width: 860px;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 1);
+  padding: 30px;
+  border-radius: 30px;
+  border: 1px solid rgba(0, 0, 0, 0.23);
+  box-shadow: 1px 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.main_header {
+  text-align: center;
+  text-transform: uppercase;
+  color: #44ddcc;
+  font-size: 2rem;
+}
+
+.sub_header {
+  color: #54aadd;
+  font-size: 2rem;
+  // margin: 0;
+  padding: 0;
+}
+
+.sections {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.sections a {
+  cursor: pointer;
+  padding: 5px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  border-radius: 10px;
+  text-decoration: none;
+  color: yellow;
+  background-color: #00a;
+}
+
+.sections a h3 {
+  font-size: 0.9rem;
+}
+
+.sections a:hover,
+a.active {
+  background-color: yellow;
+  color: #00a;
+}
+
+fieldset {
+  background: lightseagreen;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+legend {
+  background-color: lightseagreen;
+  color: white;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.fields {
+  margin: 10px 0;
+}
+
+.field {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.field label {
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 0.8rem;
+  font-weight: bold;
+  width: 40%;
+  text-align: center;
+  /*margin-right: 10px;*/
+}
+
+.field input[type="text"],
+.field input[type="date"],
+.field input[type="email"],
+.field input[type="password"],
+.field select {
+  width: 60%;
+  padding: 5px 10px;
+}
+
+.field input[type="file"] {
+  width: 60%;
+}
+
+input[type="submit"] {
+  text-transform: uppercase;
+  border: none;
+  padding: 5px 10px;
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  border-radius: 3px;
+  transition: all 0.2s;
+}
+
+input[type="submit"]:not(:disabled):hover {
+  box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.9);
+}
+
+.columns {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.column {
+  margin-right: 20px;
+}
+
+table {
+  border-collapse: collapse;
+  color: white;
+}
+
+.login {
+  width: 400px;
+  margin: 100px auto;
+}
+
+.login fieldset {
+  background-color: #ffb300;
+}
+
+#candidate_photo {
+  width: 100px;
+  height: 100px;
+  border: 1px solid burlywood;
+  background: #f0f018;
+}
+/*#b24920*/
+/*#ffb300*/
+
+.nav {
+  background-color: #f0f8ff;
+  margin: 0 auto;
+  width: 800px;
+}
+
+.nav_items {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav_sub {
+  background-color: #aff;
+  margin: 0 auto;
+  width: 200px;
+  border-radius: 3px;
+
+  .nav_items {
+    display: flex;
+    flex-direction: column;
+
+    .nav_item {
+      color: #fff;
+    }
+  }
+}
+
+.nav_item {
+  flex: 1;
+  text-align: center;
+
+  .nav_link {
+    padding: 5px 10px;
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+
+    &:hover {
+      background-color: #b24920;
+      color: #fff;
+    }
+
+    &.active {
+      background-color: #ffb300;
+    }
+  }
+}
+
+
+// Table styles
+table {
+  th {
+    background-color: #bac;
+    color: rgba(0, 0, 0, 0.7);
+  }
+}

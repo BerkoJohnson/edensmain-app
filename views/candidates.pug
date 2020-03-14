@@ -1,0 +1,50 @@
+extends layout
+
+block content
+  .wrapper
+    h1.sub_header Candidates
+    .columns
+      form.column(method="post")
+        fieldset
+          legend Add New Candidate 
+          .fields
+            .field
+              label(for="class") Class 
+              select#class(name="class")
+                option(value="") Choose Class
+                option(value="2A1") 2A1
+                option(value="2A2") 2A2
+                option(value="2A3") 2A3
+            .field
+              label(for="student") Full Name 
+              select#student(name="student")
+                option(value="") Select Student
+                option(value="100") Nana Berko David
+                option(value="101") Michelle Afia Berko
+                option(value="102") Franklin Boateng Berko
+                option(value="103") Melvina Aboagyewaa Berko
+                option(value="104") Nathaniel Adu Berko
+            .field
+              label(for="nickname") Nickname
+              input(type="text",name="nickname",id="nickname",placeholder="Enter Nickname if any")
+            .field
+              label(for="nickname") Aspiring For
+              select(id="position",name="position")
+                option(value="") Chose Position
+                option(value="Boys Prefect") Boys Prefect
+            .field
+              label(for="photo") Photo
+              input(type="file",name="photo",id="photo")
+            .image
+              img#candidate_photo(alt="Candidate Photo Here")
+            input(type="submit", value="Save Candidate",name="submit")
+        
+      table.column(border="1",cellspacing="10",cellpadding="5")
+        thead
+          tr
+            th Name of Candidate
+            th Photo
+            th AKA
+            th Class
+        tbody
+
