@@ -6,13 +6,13 @@ const PositionSchema = mongoose.Schema(
     title: {
       type: String,
       unique: true,
-      trim: true
+      trim: true,
+      required: [true, 'Please add a title']
     },
     cast_type: {
       type: String,
       enum: ["Thumbs", "Yes/No"],
       default: "Thumbs",
-      required: true
     },
     election: {
       type: mongoose.Types.ObjectId,

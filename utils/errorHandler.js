@@ -1,9 +1,32 @@
-const errorHandler = (err, req, res, next) => {
-    console.log(`${err.stack}`.red.bold);
+const ErrorResponse = require("./errorResponse");
 
-    res.status(err.statusCode || 500).json({
+const errorHandler = (err, req, res, next) => {
+    console.log(err);
+    
+    let error = {...err};
+    
+    
+    if(err.name === 'CastError') {
+        const message = `Resource not found with id ${err.value}`;
+        error = new ErrorResponse(message, 404);
+    }
+
+    if(err.code === 11000) {
+        const message = `Duplicate field value entered`;
+        error = new ErrorResponse(message, 404);
+    }
+
+if(err.name === 'ValidationError') {
+        const message = Object.values(err.errors).map(v => v.message);
+        error = new ErrorResponse(message, 404);
+    }
+
+
+    
+
+    res.status(error.statusCode || 500).json({
         success: false,
-        error: err.message || 'Server Error'
+        error: error.message || 'Server Error'
     }); 
 };
 

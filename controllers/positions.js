@@ -7,22 +7,24 @@ const ErrorResponse = require("../utils/errorResponse");
 // Get Positions
 exports.fetchPositions = async (req, res, next) => {
   try {
-    // const election =
-    const positions = await Position.find().populate({
-      path: "elections candidates",
-      select: "title  school student nickname photo _id",
-      populate: {
-        path: "student",
-        select: "name gender _id"
-      }
-    });
+    const election = req.query.election;
+    const positions = await Position.find()
+      .where("election", mongoose.Types.ObjectId(election))
+      .populate({
+        path: "elections candidates",
+        select: "title  school student nickname photo _id",
+        populate: {
+          path: "student",
+          select: "name gender _id"
+        }
+      });
     res.status(200).json({
       success: true,
       count: positions.length,
       data: positions
     });
   } catch (error) {
-    return next(new ErrorResponse(error.message, 400));
+    return next(error);
   }
 };
 
@@ -38,7 +40,7 @@ exports.fetchPosition = async (req, res, next) => {
       data: position
     });
   } catch (error) {
-    return next(new ErrorResponse(error.message, 404));
+    return next(error);
   }
 };
 
@@ -50,17 +52,8 @@ exports.createPosition = async (req, res, next) => {
     // Find election
     const elec = await Election.findById(mongoose.Types.ObjectId(election));
 
-    // If election does not exist
-    if (!elec) {
-      return next(new ErrorResponse(`Election ID is invalid`, 400));
-    }
-
     const position = new Position({ title, cast_type, election });
     const savedPosition = await position.save();
-    //
-    if (!savedPosition) {
-      return next(new ErrorResponse(`Position creation failed`, 400));
-    }
 
     // Update elec with new position
     elec.positions.push(savedPosition._id);
@@ -71,7 +64,7 @@ exports.createPosition = async (req, res, next) => {
       data: savedPosition
     });
   } catch (error) {
-    return next(new ErrorResponse(error.message, 400));
+    return next(error);
   }
 };
 
@@ -118,9 +111,10 @@ exports.deletePosition = async (req, res, next) => {
     await elec.save();
 
     res.status(200).json({
-      success: true
+      success: true,
+      data: position
     });
   } catch (error) {
-    next(new ErrorResponse(error.message, 400));
+    next(error);
   }
 };
